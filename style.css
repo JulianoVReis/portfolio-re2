@@ -1,0 +1,129 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Padrao';
+}
+
+@font-face {
+	font-family: 'Padrao';
+	src: url('font/Cambria-Font-For-Windows.ttf');
+}
+
+body {
+	width: 70%;
+	height: 100vh;
+	border-right: .3rem solid white;
+	border-left: .3rem solid white;
+	background-color: #07081F;
+	margin: auto;
+
+}
+
+nav {
+	display: flex;
+	justify-content: right;
+}
+
+nav ul {
+	display: flex;
+	gap: .3rem;
+	background-color: #595C59;
+	padding: .1rem .6rem;
+}
+
+nav li {
+	list-style: none;
+	background-color: #595C59;
+	
+}
+
+nav a {
+	text-decoration: none;
+	font-size: 1.8rem;
+	font-weight: bolder;
+	color: #292929;
+	background-color: #000102;
+	border-radius: .2rem;
+	padding: 0 .3rem;
+}
+
+.container-1 {
+	display: flex;
+	justify-content: right;
+	align-items: center;
+	height: 9.5rem;
+	position: relative;
+
+}
+
+.foto {
+	width: 10rem;
+	height: fit-content;
+	border: .7rem solid #595C59;
+	position: absolute;
+	top: -2.5rem;
+	left: 0;
+}
+
+.foto h1 {
+	font-size: 1.5rem;
+	text-align: center;
+	border-bottom: .3rem solid #595C59;
+	color: #F6F6F6;
+	padding: 0 .1rem .4rem;
+}
+
+.foto img {
+	display: block;
+	width: 100%;
+}
+
+.condicao {
+	width: 21rem;
+	height: 9rem;
+	border-top: .5rem solid #595C59;
+	border-right: 1.2rem solid #595C59;
+	border-left: 1.2rem solid #595C59;
+	border-bottom: .5rem solid #595C59;
+	background: url('img/condicao.gif')  no-repeat ;
+	background-size: cover;
+}
+
+.equip {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 21rem;
+	height: 9rem;
+	border-top: .3rem solid #595C59;
+	border-right: .7rem solid #595C59;
+	border-left: .7rem solid #595C59;
+	border-bottom: .3rem solid #595C59;
+	background-color: #08005B;
+	margin-left: .3rem;
+}
+
+.equip img {
+	width: 15rem;
+	padding: .5rem 1rem;
+}
+
+.mouse {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 11rem;
+	height: 9rem;
+	border-top: .3rem solid #595C59;
+	border-right: .7rem solid #595C59;
+	border-left: .7rem solid #595C59;
+	border-bottom: .3rem solid #595C59;
+	background-color: #08005B;
+	margin-left: .3rem;
+}
+
+.mouse img {
+	display: block;
+	width: 4rem;
+}
