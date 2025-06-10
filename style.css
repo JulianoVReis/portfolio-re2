@@ -28,14 +28,12 @@ nav {
 nav ul {
 	display: flex;
 	gap: .3rem;
-	background-color: #595C59;
+	background: url('img/fundo.jpg');
 	padding: .1rem .6rem;
 }
 
 nav li {
 	list-style: none;
-	background-color: #595C59;
-	
 }
 
 nav a {
@@ -44,23 +42,25 @@ nav a {
 	font-weight: bolder;
 	color: #292929;
 	background-color: #000102;
-	border-radius: .2rem;
+	border-radius: .4rem;
 	padding: 0 .3rem;
 }
 
 .container-1 {
 	display: flex;
 	justify-content: right;
-	align-items: center;
+	align-items: flex-start;
 	height: 9.5rem;
 	position: relative;
+	margin-top: .2rem;
 
 }
 
 .foto {
-	width: 10rem;
+	width: 9.6rem;
 	height: fit-content;
-	border: .7rem solid #595C59;
+	border: .7rem solid transparent;
+	border-image: url('img/fundo.jpg') 30 round;
 	position: absolute;
 	top: -2.5rem;
 	left: 0;
@@ -69,7 +69,8 @@ nav a {
 .foto h1 {
 	font-size: 1.5rem;
 	text-align: center;
-	border-bottom: .3rem solid #595C59;
+	border-bottom: .3rem solid transparent;
+	border-image: url('img/fundo.jpg') 30 round;
 	color: #F6F6F6;
 	padding: 0 .1rem .4rem;
 }
@@ -81,13 +82,28 @@ nav a {
 
 .condicao {
 	width: 21rem;
-	height: 9rem;
-	border-top: .5rem solid #595C59;
-	border-right: 1.2rem solid #595C59;
-	border-left: 1.2rem solid #595C59;
-	border-bottom: .5rem solid #595C59;
-	background: url('img/condicao.gif')  no-repeat ;
+	height: 8rem;
+	border-top: .5rem solid transparent;
+	border-right: 1.2rem solid transparent;
+	border-left: 1.2rem solid transparent;
+	border-bottom: .5rem solid transparent;
+	background: url('img/condicao.gif') no-repeat;
+	border-image: url('img/fundo.jpg') 30 round;
 	background-size: cover;
+	position: relative;
+}
+
+.condicao p {
+	width: 15rem;
+	font-size: 1.7rem;
+	font-weight: bold;
+	background: url('img/fundo.jpg');
+	position: absolute;
+	left: -6.5%;
+	bottom: -29%;
+	color: #22311D;
+	clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+	padding-left: 1.1rem;
 }
 
 .equip {
@@ -95,11 +111,13 @@ nav a {
 	justify-content: center;
 	align-items: center;
 	width: 21rem;
-	height: 9rem;
-	border-top: .3rem solid #595C59;
-	border-right: .7rem solid #595C59;
-	border-left: .7rem solid #595C59;
-	border-bottom: .3rem solid #595C59;
+	height: 8rem;
+	position: relative;
+	border-top: .3rem solid transparent;
+	border-right: .7rem solid transparent;
+	border-left: 2rem solid transparent;
+	border-bottom: .3rem solid transparent;
+	border-image: url('img/fundo.jpg') 30 round;
 	background-color: #08005B;
 	margin-left: .3rem;
 }
@@ -109,17 +127,28 @@ nav a {
 	padding: .5rem 1rem;
 }
 
+.equip p {
+	font-size: 1.8rem;
+	font-weight: bold;
+	rotate: -90deg;
+	transform: scaleX(1.4);
+	position: absolute;
+	left: -20%;
+	color: #22311D;
+}
+
 .mouse {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 11rem;
-	height: 9rem;
-	border-top: .3rem solid #595C59;
-	border-right: .7rem solid #595C59;
-	border-left: .7rem solid #595C59;
-	border-bottom: .3rem solid #595C59;
+	height: 8rem;
+	border-top: .3rem solid transparent;
+	border-right: .7rem solid transparent;
+	border-left: .7rem solid transparent;
+	border-bottom: .3rem solid transparent;
 	background-color: #08005B;
+	border-image: url('img/fundo.jpg') 30 round;
 	margin-left: .3rem;
 }
 
