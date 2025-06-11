@@ -1,3 +1,4 @@
+// inicio da animacao de clique do inventario
 let whatsapp = document.querySelector('.whatsapp')
 let gmail = document.querySelector('.gmail')
 let info1img = document.querySelector('.info-1-img')
@@ -39,7 +40,9 @@ document.addEventListener('click', (e) => {
     info2txt.style.display = 'none';
   }
 })
+// fim da animacao de clique do inventario
 
+// inicio typewriter
 let typeitInstance = null
 
 function typeWriterInfo(texto) {
@@ -56,3 +59,4 @@ function typeWriterInfo(texto) {
 		cursor: false
   }).go()
 }
+// fim typewriter
