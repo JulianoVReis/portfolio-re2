@@ -28,7 +28,7 @@ body {
 nav {
 	display: flex;
 	justify-content: center;
-	padding-left: 28.3rem;
+	padding-left: 27.7rem;
 }
 
 nav ul {
@@ -55,6 +55,21 @@ nav a {
 }
 
 nav a:hover {
+	color: #9D494E;
+}
+
+#projetos {
+	font-size: 1.5rem;
+	font-weight: bolder;
+	color: #302E30;
+	background-color: #000102;
+	border-radius: .4rem;
+	cursor: pointer;
+	transition: .1s;
+	padding: 0 .3rem;
+}
+
+#projetos:hover {
 	color: #9D494E;
 }
 
@@ -466,4 +481,219 @@ main {
 
 .modal-skills li:hover {
 	color: #59577B;
+}
+
+.ax-hidden {
+  visibility: hidden;
+  position: absolute;
+}
+
+.carousel {
+	display: none;
+  --carousel-height: 6.25rem;
+  --carousel-width: 62.5rem;
+  --carousel-item-height: 7.5rem;
+  --carousel-item-width: 11rem;
+  width: 100%;
+}
+
+.carousel-container {
+  align-items: center;
+  display: flex;
+  min-height: var(--carousel-height);
+  margin: 0 auto;
+  max-width: var(--carousel-width);
+  position: relative;
+  margin-top: 5.1rem;
+}
+
+.carousel-item {
+  height: var(--carousel-item-height);
+  opacity: 0;
+  position: absolute;
+  transform: translateX(-50%);
+  transition: all 0.3s ease-in-out;
+  width: var(--carousel-item-width);
+  z-index: 0;
+}
+
+.carousel-item-1 {
+  left: 15%;
+  opacity: 0.4;
+}
+
+.carousel-item-2,
+.carousel-item-4 {
+  height: calc(var(--carousel-item-height) * 1.5);
+  opacity: 1;
+  width: calc(var(--carousel-item-width) * 1.5);
+  z-index: 1;
+}
+
+.carousel-item-2 {
+  left: 30%;
+}
+
+.carousel-item-3 {
+  height: calc(var(--carousel-item-height) * 2);
+  opacity: 1;
+  left: 50%;
+  width: calc(var(--carousel-item-width) * 2);
+  z-index: 2;
+}
+
+.carousel-item-4 {
+  left: 70%;
+}
+
+.carousel-item-5 {
+  left: 85%;
+  opacity: 0.4;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  margin: 1.875rem 0;
+}
+
+.carousel-control {
+  background-color: transparent;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  height: 1.375rem;
+  margin: 0 1.25rem;
+  position: relative;
+  transform: scale(1.5);
+  transition: transform 0.5s ease-out;
+  width: 1.375rem;
+}
+
+.carousel-control:hover {
+  transform: scale(1.3);
+}
+
+.carousel-control-previous::after,
+.carousel-control-previous::before {
+  box-sizing: border-box;
+  content: '';
+  display: block;
+  height: 0.5rem;
+  position: absolute;
+  top: 0.3125rem;
+}
+.carousel-control-previous::before {
+  background: currentColor;
+  border-radius: 0.125rem;
+  right: 0.6875rem;
+  width: 0.125rem;
+}
+.carousel-control-previous::after {
+  border-bottom: 0.25rem solid transparent;
+  border-right: 0.3125rem solid;
+  border-top: 0.25rem solid transparent;
+  right: 0.3125rem;
+  width: 0;
+}
+
+.carousel-control-next::after,
+.carousel-control-next::before {
+  box-sizing: border-box;
+  content: "";
+  display: block;
+  height: 0.5rem;
+  position: absolute;
+  top: 0.3125rem;
+}
+
+.carousel-control-next::before {
+  background: currentColor;
+  border-radius: 0.125rem;
+  left: 0.6875rem;
+  width: 0.125rem;
+}
+
+.carousel-control-next::after {
+  border-bottom: 0.25rem solid transparent;
+  border-left: 0.3125rem solid;
+  border-top: 0.25rem solid transparent;
+  left: 0.3125rem;
+  width: 0;
+}
+
+.carousel-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  position: absolute;
+  transform: translateX(-50%);
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  opacity: 0;
+  z-index: 0;
+  height: var(--carousel-item-height);
+  width: var(--carousel-item-width);
+}
+
+.carousel-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.carousel-item-1 {
+  left: 15%;
+  opacity: 0.4;
+}
+
+.carousel-item-2,
+.carousel-item-4 {
+  height: calc(var(--carousel-item-height) * 1.5);
+  width: calc(var(--carousel-item-width) * 1.5);
+  opacity: 1;
+  z-index: 1;
+}
+
+.carousel-item-2 {
+  left: 30%;
+}
+
+.carousel-item-3 {
+  height: calc(var(--carousel-item-height) * 2);
+  width: calc(var(--carousel-item-width) * 2);
+  opacity: 1;
+  left: 50%;
+  z-index: 2;
+}
+
+.carousel-item-4 {
+  left: 70%;
+}
+
+.carousel-item-5 {
+  left: 85%;
+  opacity: 0.4;
+}
+
+.carousel-caption {
+  position: absolute;
+  bottom: 0.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #F6F6F6;
+  font-size: 0.9rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.3rem;
+  text-align: center;
+}
+
+.carousel-caption a {
+  color: #19E428;
+  text-decoration: none;
+}
+
+.carousel-caption a:hover {
+  text-decoration: underline;
 }
