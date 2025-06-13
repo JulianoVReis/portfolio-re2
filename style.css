@@ -504,7 +504,7 @@ main {
   margin: 0 auto;
   max-width: var(--carousel-width);
   position: relative;
-  margin-top: 5.1rem;
+  margin-top: 4.3rem;
 }
 
 .carousel-item {
@@ -586,7 +586,7 @@ main {
   background: currentColor;
   border-radius: 0.125rem;
   right: 0.6875rem;
-  width: 0.125rem;
+  width: 0.1rem;
 }
 .carousel-control-previous::after {
   border-bottom: 0.25rem solid transparent;
@@ -677,16 +677,18 @@ main {
 }
 
 .carousel-caption {
+	display: flex;
+	justify-content: center;
+	align-items: center;
   position: absolute;
-  bottom: 0.2rem;
+  top: 77%;
   left: 50%;
+	width: 80%;
+	height: 3rem;
+	border-radius: 0.5rem;
   transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.6);
-  color: #F6F6F6;
+  background-color: #000102db;
   font-size: 0.9rem;
-  padding: 0.3rem 0.5rem;
-  border-radius: 0.3rem;
-  text-align: center;
 }
 
 .carousel-caption a {
@@ -697,3 +699,5 @@ main {
 .carousel-caption a:hover {
   text-decoration: underline;
 }
+
+/* Página Sobre */
