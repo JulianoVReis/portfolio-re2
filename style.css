@@ -382,6 +382,8 @@ main {
 	border: .7rem solid transparent;
 	border-image: url('img/fundo.jpg') 30 round;
 	background-color: #090919;
+	z-index: 2;
+	position: relative;
 	padding: 1rem;
 	margin-top: .4rem;
 }
@@ -393,6 +395,7 @@ main {
 
 .container-3 {
 	position: relative;
+	z-index: 1;
 }
 
 .inv {
@@ -402,8 +405,9 @@ main {
 	height: 32.2rem;
 	border: .7rem solid transparent;
 	border-image: url('img/fundo.jpg') 30 round;
-	position: absolute;
-	top: -6%;
+	z-index: 2;
+	position: relative;
+	top: -5.6%;
 	background-color: #08005B;
 	margin-left: .3rem;
 }
@@ -431,9 +435,9 @@ main {
 	width: 5rem;
 	height: 2rem;
 	position: absolute;
-	top: 90%;
-	left: -30%;
-	z-index: -1;
+	top: 85%;
+  left: -20%;
+	z-index: -10;
 	color: transparent;
 	background-image: linear-gradient(#101010, #181818, #313131, #4A4A4A, #313131, #181818, #101010);
 }
@@ -442,7 +446,7 @@ main {
 	width: 5rem;
 	height: 1rem;
 	position: absolute;
-	top: 92%;
+	top: 87%;
 	left: 95%;
 	z-index: -1;
 	color: transparent;
@@ -452,11 +456,61 @@ main {
 .modal-skills {
 	display: none;
 	background: url('img/fundo.jpg');
-	z-index: 1;
 	position: absolute;
 	bottom: -193.3%;
 	left: -11.5%;
 }
+
+.modal-github, .modal-linkedin {
+	display: none;
+	background: url('img/fundo.jpg');
+	position: absolute;
+	bottom: -145.2%;
+	left: -5.3%;
+}
+
+.modal-github h2, .modal-linkedin h2 {
+	text-align: center;
+	font-size: 1.9rem;
+	font-weight: bolder;
+	color: #22311D;
+}
+
+.modal-github ul, .modal-linkedin ul {
+	list-style: none;
+	padding: 0 .7rem .7rem;
+}
+
+.modal-github li, .modal-linkedin li, .modal-github li a, .modal-linkedin li a {
+	font-size: 1.8rem;
+	text-align: center;
+	text-decoration: none;
+	transition: .1s;
+	cursor: pointer;
+	color: #F6F6F6;
+	background-color: #040404;
+	padding: 0 .45rem .2rem;
+}
+
+.modal-github li + li, .modal-linkedin li + li {
+	margin-top: .7rem;
+}
+
+.modal-github li:hover, .modal-linkedin li:hover, .modal-github li a:hover, .modal-linkedin li a:hover {
+	color: #59577B;
+}
+
+.modal-github.animar-entrada,
+.modal-linkedin.animar-entrada {
+  animation: entrar-da-direita 0.1s ease forwards;
+  z-index: 1;
+}
+
+.modal-github.animar-saida-direita,
+.modal-linkedin.animar-saida-direita {
+  animation: sair-para-direita 0.1s ease forwards;
+}
+
 
 .modal-skills h2 {
 	text-align: center;
@@ -728,6 +782,10 @@ main {
 
 /* Página Sobre */
 
+#titulo-sobre {
+	margin-bottom: 30rem;
+}
+
 .sobre-container {
 	height: 100vh;
 	position: relative;
@@ -749,30 +807,6 @@ main {
 	font-size: 2rem;
 	text-indent: 2rem;
 	line-height: 3rem;
-}
-
-.sobre-container div::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 4.5rem;
-  transform: translateY(-50%);
-  border-top: 1.2rem solid transparent;
-  border-bottom: 1.2rem solid transparent;
-  border-right: 1.6rem solid #19E428;
-  animation: seta-esquerda 1s infinite ease-in-out;
-}
-
-.sobre-container div::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: 4.5rem;
-  transform: translateY(-50%);
-  border-top: 1.2rem solid transparent;
-  border-bottom: 1.2rem solid transparent;
-  border-left: 1.6rem solid #19E428;
-  animation: seta-direita 1s infinite ease-in-out;
 }
 
 @keyframes seta-esquerda {
@@ -804,13 +838,14 @@ main {
   opacity: 0;
   transform: translateX(100%);
   transition: all 0.5s ease;
+  padding: 8rem;
+  text-align: left;
 }
 
 .texto-sobre.ativo {
   opacity: 1;
   transform: translateX(0);
   z-index: 1;
-	padding: 10rem;
 }
 
 .texto-sobre.saindo-esquerda {
@@ -822,3 +857,93 @@ main {
   transform: translateX(100%);
   opacity: 0;
 }
+
+.seta {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  color: #19E428;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  user-select: none;
+}
+
+#seta-esquerda {
+  left: 2rem;
+	animation: seta-esquerda 1s infinite ease-in-out;
+}
+
+#seta-direita {
+  right: 2rem;
+	animation: seta-direita 1s infinite ease-in-out;
+}
+
+#voltar-index {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  font-size: 2rem;
+  color: rgb(101, 101, 101);
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  z-index: 20;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#voltar-index:hover {
+  color: #F6F6F6;
+}
+
+@keyframes entrar-da-direita {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes sair-para-esquerda {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes sair-para-direita {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.modal-skills.animar-saida-direita {
+  animation: sair-para-direita 0.1s ease forwards;
+	z-index: 1;
+}
+
+
+.modal-skills.animar-entrada {
+  animation: entrar-da-direita 0.1s ease forwards;
+	z-index: 1;
+}
+
+.modal-skills.animar-saida {
+  animation: sair-para-esquerda 0.5s ease forwards;
+}
+
+

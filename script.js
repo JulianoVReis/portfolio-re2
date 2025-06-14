@@ -1,9 +1,11 @@
+
 // inicio da animacao de clique do inventario
 let whatsapp, gmail, skills, modalSkills, modalSkillsN1, modalSkillsN2, modalSkillsN3;
 let info1img, info1, info1Span, info2txt, carrossel, projetos;
 let img;
 let originalBorderImage, originalBackgroundColor;
 let typeitInstance = null;
+let github, linkedin, modalGithub, modalLinkedin;
 
 const principalDiv = document.querySelector('.principal');
 const conteudoOriginal = principalDiv.innerHTML;
@@ -38,6 +40,10 @@ function reinicializarScripts() {
   info2txt = document.querySelector("#info2txt");
   carrossel = document.querySelector(".carousel");
   projetos = document.querySelector("#projetos");
+  github = document.querySelector(".github");
+  linkedin = document.querySelector(".linkedin");
+  modalGithub = document.querySelector(".modal-github");
+  modalLinkedin = document.querySelector(".modal-linkedin");
 
   img = document.createElement("img");
   info1img.appendChild(img);
@@ -49,6 +55,13 @@ function reinicializarScripts() {
   whatsapp?.addEventListener("click", () => {
     carrossel.style.display = "none";
     modalSkills.style.display = "none";
+    modalGithub.style.display = "none";
+    modalLinkedin.style.display = "none";
+
+    skillsAberto = false;
+    githubAberto = false;
+    linkedinAberto = false;
+
     info1.style.borderImage = originalBorderImage;
     info1.style.backgroundColor = originalBackgroundColor;
     info1Span.style.display = "block";
@@ -67,6 +80,13 @@ function reinicializarScripts() {
   gmail?.addEventListener("click", () => {
     carrossel.style.display = "none";
     modalSkills.style.display = "none";
+    modalGithub.style.display = "none";
+    modalLinkedin.style.display = "none";
+
+    skillsAberto = false;
+    githubAberto = false;
+    linkedinAberto = false;
+
     info1.style.borderImage = originalBorderImage;
     info1.style.backgroundColor = originalBackgroundColor;
     info1Span.style.display = "block";
@@ -82,14 +102,97 @@ function reinicializarScripts() {
     }
   });
 
+  let skillsAberto = false;
+
   skills?.addEventListener("click", () => {
+    info1img.style.display = "none";
+    info2txt.style.display = "none";
     carrossel.style.display = "none";
+    modalGithub.style.display = "none";
+    modalLinkedin.style.display = "none";
+
     info1.style.borderImage = "none";
     info1.style.backgroundColor = "#07081F";
-    info1img.style.display = "none";
     info1Span.style.display = "none";
+
+    if (skillsAberto) {
+      modalSkills.classList.remove("animar-entrada");
+      modalSkills.classList.add("animar-saida-direita");
+
+      modalSkills.addEventListener("animationend", function esconder() {
+        modalSkills.style.display = "none";
+        modalSkills.classList.remove("animar-saida-direita");
+        modalSkills.removeEventListener("animationend", esconder);
+        skillsAberto = false;
+      });
+    } else {
+      modalSkills.style.display = "block";
+      modalSkills.classList.remove("animar-saida-direita");
+      modalSkills.classList.add("animar-entrada");
+      skillsAberto = true;
+    }
+  });
+
+  let githubAberto = false;
+  github?.addEventListener("click", () => {
+    info1img.style.display = "none";
     info2txt.style.display = "none";
-    modalSkills.style.display = modalSkills.style.display === "block" ? "none" : "block";
+    carrossel.style.display = "none";
+    modalSkills.style.display = "none";
+    modalLinkedin.style.display = "none";
+
+    info1.style.borderImage = "none";
+    info1.style.backgroundColor = "#07081F";
+    info1Span.style.display = "none";
+
+    if (githubAberto) {
+      modalGithub.classList.remove("animar-entrada");
+      modalGithub.classList.add("animar-saida-direita");
+      modalGithub.addEventListener("animationend", function esconder() {
+        modalGithub.style.display = "none";
+        modalGithub.classList.remove("animar-saida-direita");
+        modalGithub.removeEventListener("animationend", esconder);
+        githubAberto = false;
+      });
+    } else {
+      modalGithub.style.display = "block";
+      modalGithub.classList.remove("animar-saida-direita");
+      modalGithub.classList.add("animar-entrada");
+      githubAberto = true;
+      linkedinAberto = false;
+      skillsAberto = false;
+    }
+  });
+
+  let linkedinAberto = false;
+  linkedin?.addEventListener("click", () => {
+    info1img.style.display = "none";
+    info2txt.style.display = "none";
+    carrossel.style.display = "none";
+    modalSkills.style.display = "none";
+    modalGithub.style.display = "none";
+
+    info1.style.borderImage = "none";
+    info1.style.backgroundColor = "#07081F";
+    info1Span.style.display = "none";
+
+    if (linkedinAberto) {
+      modalLinkedin.classList.remove("animar-entrada");
+      modalLinkedin.classList.add("animar-saida-direita");
+      modalLinkedin.addEventListener("animationend", function esconder() {
+        modalLinkedin.style.display = "none";
+        modalLinkedin.classList.remove("animar-saida-direita");
+        modalLinkedin.removeEventListener("animationend", esconder);
+        linkedinAberto = false;
+      });
+    } else {
+      modalLinkedin.style.display = "block";
+      modalLinkedin.classList.remove("animar-saida-direita");
+      modalLinkedin.classList.add("animar-entrada");
+      linkedinAberto = true;
+      githubAberto = false;
+      skillsAberto = false;
+    }
   });
 
   modalSkillsN1?.addEventListener("click", () => {
@@ -108,10 +211,15 @@ function reinicializarScripts() {
   });
 
   document.addEventListener("click", (e) => {
-    const ignorarClique = [info2txt, modalSkillsN1, modalSkillsN2, modalSkillsN3, whatsapp, gmail, skills];
+    const ignorarClique = [info2txt, modalSkillsN1, modalSkillsN2, modalSkillsN3, whatsapp, gmail, skills, github, linkedin];
     if (!ignorarClique.some(el => el && el.contains(e.target))) {
       info2txt.style.display = "none";
       modalSkills.style.display = "none";
+      modalGithub.style.display = "none";
+      modalLinkedin.style.display = "none";
+      skillsAberto = false;
+      githubAberto = false;
+      linkedinAberto = false;
     }
   });
 
@@ -121,6 +229,12 @@ function reinicializarScripts() {
   }
 
   projetos?.addEventListener("click", () => {
+    info1img.style.display = "none";
+    info2txt.style.display = "none";
+    modalSkills.style.display = "none";
+    modalGithub.style.display = "none";
+    modalLinkedin.style.display = "none";
+
     const isVisible = carrossel.style.display === "block";
     if (isVisible) {
       carrossel.style.display = "none";
@@ -128,10 +242,7 @@ function reinicializarScripts() {
     } else {
       carrossel.style.display = "block";
       info1.style.display = "flex";
-      info1img.style.display = "none";
-      info2txt.style.display = "none";
       info1Span.style.display = "block";
-      modalSkills.style.display = "none";
       info1.style.borderImage = originalBorderImage;
       info1.style.backgroundColor = '#07081F';
     }
@@ -152,7 +263,7 @@ function ativarEventos() {
     linkVoltar.addEventListener('click', e => {
       e.preventDefault();
       principalDiv.innerHTML = conteudoOriginal;
-      principalDiv.style.padding = originalPadding; // restaura o padding
+      principalDiv.style.padding = originalPadding;
       ativarEventos();
       reinicializarScripts();
     });
@@ -170,7 +281,7 @@ function carregarPagina(url) {
 
       if (url === 'sobre.html') {
         principalDiv.style.padding = '0';
-        inicializarNavegacaoTextoSobre(); // inicializa a navegação APÓS carregar o conteúdo
+        inicializarNavegacaoTextoSobre();
       }
 
       ativarEventos();
@@ -181,9 +292,7 @@ function carregarPagina(url) {
     });
 }
 
-
-// ================== Classe Carousel =====================
-
+// Classe Carousel incluída aqui para unificar o script
 class Carousel {
   constructor(el) {
     this.el = el;
@@ -283,11 +392,9 @@ class Carousel {
   }
 }
 
-// Inicializa tudo no carregamento
 window.addEventListener("DOMContentLoaded", () => {
   ativarEventos();
   reinicializarScripts();
-
   const el = document.querySelector(".carousel");
   if (el && el.children.length === 0) {
     const exampleCarousel = new Carousel(el);
@@ -295,42 +402,46 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-
-
 function inicializarNavegacaoTextoSobre() {
   const paragrafos = document.querySelectorAll('.texto-sobre');
+  const titulo = document.getElementById('titulo-sobre');
+  const setaEsquerda = document.getElementById('seta-esquerda');
+  const setaDireita = document.getElementById('seta-direita');
+
   let indiceAtual = 0;
 
-  function mostrarParagrafo(novoIndice, direcao) {
-    if (novoIndice === indiceAtual) return;
+  function mostrarParagrafo(novoIndice) {
+    if (novoIndice < 0 || novoIndice >= paragrafos.length || novoIndice === indiceAtual) return;
 
     const atual = paragrafos[indiceAtual];
     const proximo = paragrafos[novoIndice];
 
     atual.classList.remove('ativo');
-    atual.classList.add(direcao === 'esquerda' ? 'saindo-direita' : 'saindo-esquerda');
+    atual.classList.add(novoIndice > indiceAtual ? 'saindo-esquerda' : 'saindo-direita');
     proximo.classList.add('ativo');
 
     setTimeout(() => {
       atual.classList.remove('saindo-esquerda', 'saindo-direita');
     }, 500);
 
+    titulo.style.display = novoIndice === 0 ? 'block' : 'none';
     indiceAtual = novoIndice;
+
+    setaEsquerda.style.display = indiceAtual === 0 ? 'none' : 'block';
+    setaDireita.style.display = indiceAtual === paragrafos.length - 1 ? 'none' : 'block';
   }
 
-  const container = document.querySelector('.sobre-container');
-
-  if (!container || paragrafos.length < 2) return; // segurança
-
-  container.addEventListener('click', (e) => {
-    const x = e.clientX;
-    const largura = container.clientWidth;
-    const margem = 100;
-
-    if (x < margem && indiceAtual !== 0) {
-      mostrarParagrafo(0, 'esquerda');
-    } else if (x > largura - margem && indiceAtual !== 1) {
-      mostrarParagrafo(1, 'direita');
-    }
+  setaEsquerda.addEventListener('click', (e) => {
+    e.stopPropagation();
+    mostrarParagrafo(indiceAtual - 1);
   });
+
+  setaDireita.addEventListener('click', (e) => {
+    e.stopPropagation();
+    mostrarParagrafo(indiceAtual + 1);
+  });
+
+  titulo.style.display = 'block';
+  setaEsquerda.style.display = 'none';
+  setaDireita.style.display = paragrafos.length > 1 ? 'block' : 'none';
 }
