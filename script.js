@@ -1,4 +1,3 @@
-
 // inicio da animacao de clique do inventario
 let whatsapp, gmail, skills, modalSkills, modalSkillsN1, modalSkillsN2, modalSkillsN3;
 let info1img, info1, info1Span, info2txt, carrossel, projetos;
@@ -6,6 +5,7 @@ let img;
 let originalBorderImage, originalBackgroundColor;
 let typeitInstance = null;
 let github, linkedin, modalGithub, modalLinkedin;
+let examinarGithub, examinarLinkedin;
 
 const principalDiv = document.querySelector('.principal');
 const conteudoOriginal = principalDiv.innerHTML;
@@ -76,6 +76,65 @@ function reinicializarScripts() {
       typeWriterInfo('<span style="color: #19E428;">WhatsApp</span><br>(51) 989199543');
     }
   });
+
+	examinarGithub = document.querySelector(".examinar-github");
+examinarLinkedin = document.querySelector(".examinar-linkedin");
+
+// Adicione estes event listeners após os outros
+// Modifique os event listeners para fechar o modal quando examinar
+examinarGithub?.addEventListener("click", () => {
+  modalGithub.style.display = "none"; // Fecha o modal
+  githubAberto = false;
+
+  // Restante do código igual ao WhatsApp/Gmail
+  carrossel.style.display = "none";
+  modalSkills.style.display = "none";
+  modalLinkedin.style.display = "none";
+  
+  skillsAberto = false;
+  linkedinAberto = false;
+
+  info1.style.borderImage = originalBorderImage;
+  info1.style.backgroundColor = originalBackgroundColor;
+  info1Span.style.display = "block";
+
+  if (info1img.style.display === "flex" && img.src.includes("github.png")) {
+    info1img.style.display = "none";
+    info2txt.style.display = "none";
+  } else {
+    info1img.style.display = "flex";
+    img.src = "img/github.png";
+    info2txt.style.display = "block";
+    typeWriterInfo('<span style="color: #19E428;">GitHub</span> é uma plataforma de hospedagem de código-fonte e arquivos com controle de versão usando o Git.');
+  }
+});
+
+examinarLinkedin?.addEventListener("click", () => {
+  modalLinkedin.style.display = "none"; // Fecha o modal
+  linkedinAberto = false;
+
+  // Restante do código igual ao WhatsApp/Gmail
+  carrossel.style.display = "none";
+  modalSkills.style.display = "none";
+  modalGithub.style.display = "none";
+  
+  skillsAberto = false;
+  githubAberto = false;
+
+  info1.style.borderImage = originalBorderImage;
+  info1.style.backgroundColor = originalBackgroundColor;
+  info1Span.style.display = "block";
+
+  if (info1img.style.display === "flex" && img.src.includes("linkedin.png")) {
+    info1img.style.display = "none";
+    info2txt.style.display = "none";
+  } else {
+    info1img.style.display = "flex";
+    img.src = "img/linkedin.png";
+    info2txt.style.display = "block";
+    typeWriterInfo('<span style="color: #19E428;">LinkedIn</span> é uma plataforma de mídia social focada em negócios e emprego que funciona através de sites e aplicativos móveis.');
+  }
+});
 
   gmail?.addEventListener("click", () => {
     carrossel.style.display = "none";
@@ -211,18 +270,20 @@ function reinicializarScripts() {
   });
 
   document.addEventListener("click", (e) => {
-    const ignorarClique = [info2txt, modalSkillsN1, modalSkillsN2, modalSkillsN3, whatsapp, gmail, skills, github, linkedin];
+    const ignorarClique = [info2txt, modalSkillsN1, modalSkillsN2, modalSkillsN3, 
+                          whatsapp, gmail, skills, github, linkedin, 
+                          examinarGithub, examinarLinkedin];
     if (!ignorarClique.some(el => el && el.contains(e.target))) {
-      info2txt.style.display = "none";
-      modalSkills.style.display = "none";
-      modalGithub.style.display = "none";
-      modalLinkedin.style.display = "none";
-      skillsAberto = false;
-      githubAberto = false;
-      linkedinAberto = false;
+        info2txt.style.display = "none";
+        modalSkills.style.display = "none";
+        modalGithub.style.display = "none";
+        modalLinkedin.style.display = "none";
+        info1img.style.display = "none"; // Esta é a linha que você precisa adicionar
+        skillsAberto = false;
+        githubAberto = false;
+        linkedinAberto = false;
     }
-  });
-
+});
   if (carrossel && carrossel.children.length === 0) {
     const novoCarousel = new Carousel(carrossel);
     novoCarousel.mounted();
