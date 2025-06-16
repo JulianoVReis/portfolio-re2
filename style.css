@@ -55,8 +55,17 @@ nav a {
 }
 
 nav a:hover {
-	color: #9D494E;
+	color: #F6F6F6;
 }
+
+nav a.ativo {
+  color: #9D494E !important;
+}
+
+#projetos.ativo {
+  color: #9D494E !important;
+}
+
 
 #projetos {
 	font-size: 1.5rem;
@@ -70,7 +79,7 @@ nav a:hover {
 }
 
 #projetos:hover {
-	color: #9D494E;
+	color: #F6F6F6;
 }
 
 .container-1 {
@@ -422,8 +431,24 @@ main {
 }
 
 .slot:hover {
-	border: .3rem solid #A70000;
+  animation: borda-piscando 1.2s infinite;
 }
+
+@keyframes borda-piscando {
+  0% {
+    border: 0.3rem solid #FF0103;
+  }
+  33% {
+    border: 0.3rem solid #CF0101; 
+  }
+  66% {
+    border: 0.3rem solid #AA0000;
+  }
+  100% {
+    border: 0.3rem solid #7F0200;
+  }
+}
+
 
 .whatsapp, .gmail, .skills, .projetos, .formacao, .github, .linkedin {
 	width: 4.2rem;
@@ -455,6 +480,12 @@ main {
 	z-index: -1;
 	color: transparent;
 	background-image: linear-gradient(#101010, #181818, #313131, #4A4A4A, #313131, #181818, #101010);
+}
+
+.modal-skills li.ativo,
+.modal-github li.ativo, 
+.modal-linkedin li.ativo {
+  color: #59577B !important;
 }
 
 .modal-skills {
