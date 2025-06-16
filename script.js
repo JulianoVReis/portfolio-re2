@@ -5,6 +5,7 @@ let img;
 let originalBorderImage, originalBackgroundColor;
 let typeitInstance = null;
 let github, linkedin, modalGithub, modalLinkedin;
+let formacao;
 let examinarGithub, examinarLinkedin;
 
 const principalDiv = document.querySelector('.principal');
@@ -44,6 +45,7 @@ function reinicializarScripts() {
   linkedin = document.querySelector(".linkedin");
   modalGithub = document.querySelector(".modal-github");
   modalLinkedin = document.querySelector(".modal-linkedin");
+	formacao = document.querySelector(".formacao");
 
   img = document.createElement("img");
   info1img.appendChild(img);
@@ -53,6 +55,7 @@ function reinicializarScripts() {
   originalBackgroundColor = info1Styles.backgroundColor;
 
   whatsapp?.addEventListener("click", () => {
+		tocarSom("audio/re2-cursor-select.mp3");
     carrossel.style.display = "none";
     modalSkills.style.display = "none";
     modalGithub.style.display = "none";
@@ -83,6 +86,7 @@ examinarLinkedin = document.querySelector(".examinar-linkedin");
 // Adicione estes event listeners após os outros
 // Modifique os event listeners para fechar o modal quando examinar
 examinarGithub?.addEventListener("click", () => {
+	tocarSom("audio/re2-cursor-select.mp3");
   modalGithub.style.display = "none"; // Fecha o modal
   githubAberto = false;
 
@@ -110,6 +114,7 @@ examinarGithub?.addEventListener("click", () => {
 });
 
 examinarLinkedin?.addEventListener("click", () => {
+	tocarSom("audio/re2-cursor-select.mp3");
   modalLinkedin.style.display = "none"; // Fecha o modal
   linkedinAberto = false;
 
@@ -137,6 +142,7 @@ examinarLinkedin?.addEventListener("click", () => {
 });
 
   gmail?.addEventListener("click", () => {
+		tocarSom("audio/re2-cursor-select.mp3");
     carrossel.style.display = "none";
     modalSkills.style.display = "none";
     modalGithub.style.display = "none";
@@ -161,6 +167,33 @@ examinarLinkedin?.addEventListener("click", () => {
     }
   });
 
+	formacao?.addEventListener("click", () => {
+		tocarSom("audio/re2-cursor-select.mp3");
+  carrossel.style.display = "none";
+  modalSkills.style.display = "none";
+  modalGithub.style.display = "none";
+  modalLinkedin.style.display = "none";
+
+  skillsAberto = false;
+  githubAberto = false;
+  linkedinAberto = false;
+
+  info1.style.borderImage = originalBorderImage;
+  info1.style.backgroundColor = originalBackgroundColor;
+  info1Span.style.display = "block";
+
+  if (info1img.style.display === "flex" && img.src.includes("gmail.png")) {
+    info1img.style.display = "none";
+    info2txt.style.display = "none";
+  } else {
+    info1img.style.display = "flex";
+    img.src = "img/formacao.png"; // usando a imagem do Gmail temporariamente
+    info2txt.style.display = "block";
+    typeWriterInfo('<span style="color: #19E428;">Formação</span><br>QI - Faculdade & Escola Técnica<br>(cursando)');
+  }
+});
+
+
   let skillsAberto = false;
 
   skills?.addEventListener("click", () => {
@@ -183,12 +216,14 @@ examinarLinkedin?.addEventListener("click", () => {
         modalSkills.classList.remove("animar-saida-direita");
         modalSkills.removeEventListener("animationend", esconder);
         skillsAberto = false;
+				tocarSom("audio/re2-cursor-cancel.mp3")
       });
     } else {
       modalSkills.style.display = "block";
       modalSkills.classList.remove("animar-saida-direita");
       modalSkills.classList.add("animar-entrada");
       skillsAberto = true;
+			tocarSom("audio/re2-cursor-select.mp3")
     }
   });
 
@@ -212,6 +247,7 @@ examinarLinkedin?.addEventListener("click", () => {
         modalGithub.classList.remove("animar-saida-direita");
         modalGithub.removeEventListener("animationend", esconder);
         githubAberto = false;
+				tocarSom("audio/re2-cursor-cancel.mp3")
       });
     } else {
       modalGithub.style.display = "block";
@@ -220,6 +256,7 @@ examinarLinkedin?.addEventListener("click", () => {
       githubAberto = true;
       linkedinAberto = false;
       skillsAberto = false;
+			tocarSom("audio/re2-cursor-select.mp3")
     }
   });
 
@@ -243,6 +280,7 @@ examinarLinkedin?.addEventListener("click", () => {
         modalLinkedin.classList.remove("animar-saida-direita");
         modalLinkedin.removeEventListener("animationend", esconder);
         linkedinAberto = false;
+				tocarSom("audio/re2-cursor-cancel.mp3")
       });
     } else {
       modalLinkedin.style.display = "block";
@@ -251,6 +289,7 @@ examinarLinkedin?.addEventListener("click", () => {
       linkedinAberto = true;
       githubAberto = false;
       skillsAberto = false;
+			tocarSom("audio/re2-cursor-select.mp3")
     }
   });
 
@@ -270,9 +309,13 @@ examinarLinkedin?.addEventListener("click", () => {
   });
 
   document.addEventListener("click", (e) => {
-    const ignorarClique = [info2txt, modalSkillsN1, modalSkillsN2, modalSkillsN3, 
-                          whatsapp, gmail, skills, github, linkedin, 
-                          examinarGithub, examinarLinkedin];
+    const ignorarClique = [
+  info2txt, modalSkillsN1, modalSkillsN2, modalSkillsN3,
+  whatsapp, gmail, skills, github, linkedin, formacao,
+  examinarGithub, examinarLinkedin
+];
+
+
     if (!ignorarClique.some(el => el && el.contains(e.target))) {
         info2txt.style.display = "none";
         modalSkills.style.display = "none";
@@ -308,9 +351,82 @@ examinarLinkedin?.addEventListener("click", () => {
       info1.style.backgroundColor = '#07081F';
     }
   });
+
+	document.addEventListener("click", iniciarMusica, { once: true });
+
+function iniciarMusica() {
+  const audio = document.getElementById("musica-fundo");
+  if (audio) {
+    audio.play().catch(() => {
+      console.warn("Autoplay bloqueado pelo navegador.");
+    });
+  }
 }
 
+// Sons de hover nos elementos .inv
+adicionarSomHover(skills, "audio/re2-cursor-move.mp3");
+adicionarSomHover(formacao, "audio/re2-cursor-move.mp3");
+adicionarSomHover(github, "audio/re2-cursor-move.mp3");
+adicionarSomHover(linkedin, "audio/re2-cursor-move.mp3");
+adicionarSomHover(whatsapp, "audio/re2-cursor-move.mp3");
+adicionarSomHover(gmail, "audio/re2-cursor-move.mp3");
+
+// Sons de hover e clique nos itens do nav
+document.querySelectorAll("nav ul li").forEach(li => {
+  adicionarSomHover(li, "audio/re2-cursor-move.mp3");
+  li.addEventListener("click", () => {
+    tocarSom("audio/re2-cursor-select.mp3");
+  });
+});
+
+// Sons de hover nas lis dos modais
+document.querySelectorAll(
+  ".modal-skills li, .modal-github li, .modal-linkedin li"
+).forEach(li => {
+  adicionarSomHover(li, "audio/re2-cursor-move.mp3");
+});
+
+
+}
+
+function adicionarSomHover(elemento, caminhoAudio) {
+  if (elemento) {
+    elemento.addEventListener("mouseenter", () => {
+      const audio = new Audio(caminhoAudio);
+      audio.volume = 0.5; // ajuste o volume se quiser
+      audio.play().catch(() => {});
+    });
+  }
+}
+
+function tocarSom(caminhoAudio) {
+  const audio = new Audio(caminhoAudio);
+  audio.volume = 0.6; // ou ajuste como preferir
+  audio.play().catch(() => {});
+}
+
+		// Adicionar som ao clicar nas lis dos modais
+const modalItems = document.querySelectorAll(
+  ".modal-skills li, .modal-github li, .modal-linkedin li"
+);
+
+modalItems.forEach(li => {
+  li.addEventListener("click", () => {
+    tocarSom("audio/re2-cursor-select.mp3");
+  });
+});
+
 function ativarEventos() {
+	const linkCertificados = document.getElementById('n4');
+if (linkCertificados) {
+  linkCertificados.addEventListener('click', e => {
+    e.preventDefault();
+    tocarSom("audio/re2-cursor-select.mp3"); // ← SOM AO CLICAR
+    carregarPagina('certificados.html');
+  });
+}
+
+
   const linkSobre = document.getElementById('link-sobre');
   if (linkSobre) {
     linkSobre.addEventListener('click', e => {
@@ -323,6 +439,7 @@ function ativarEventos() {
   if (linkVoltar) {
     linkVoltar.addEventListener('click', e => {
       e.preventDefault();
+			tocarSom("audio/re2-cursor-cancel.mp3");
       principalDiv.innerHTML = conteudoOriginal;
       principalDiv.style.padding = originalPadding;
       ativarEventos();
@@ -340,8 +457,11 @@ function carregarPagina(url) {
     .then(html => {
       principalDiv.innerHTML = html;
 
-      if (url === 'sobre.html') {
+      if (url === 'sobre.html' || url === 'certificados.html') {
         principalDiv.style.padding = '0';
+      }
+
+      if (url === 'sobre.html') {
         inicializarNavegacaoTextoSobre();
       }
 
@@ -351,7 +471,9 @@ function carregarPagina(url) {
       console.error(err);
       alert('Erro ao carregar a página');
     });
+
 }
+
 
 // Classe Carousel incluída aqui para unificar o script
 class Carousel {
@@ -494,11 +616,13 @@ function inicializarNavegacaoTextoSobre() {
 
   setaEsquerda.addEventListener('click', (e) => {
     e.stopPropagation();
+		tocarSom("audio/re2-book-page-turn.mp3");
     mostrarParagrafo(indiceAtual - 1);
   });
 
   setaDireita.addEventListener('click', (e) => {
     e.stopPropagation();
+		tocarSom("audio/re2-book-page-turn.mp3");
     mostrarParagrafo(indiceAtual + 1);
   });
 
