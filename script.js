@@ -651,18 +651,53 @@ class Carousel {
 
 // --- Evento DOMContentLoaded: ativa scripts no carregamento ---
 window.addEventListener("DOMContentLoaded", () => {
-  ativarEventos()
-  reinicializarScripts()
-  const somFundo = document.getElementById("musica-fundo")
+  ativarEventos();
+  reinicializarScripts();
+
+  const somFundo = document.getElementById("musica-fundo");
   if (somFundo) {
-    somFundo.volume = 0.3
+    somFundo.volume = 0.3;
     somFundo.play().catch(() => {
       document.addEventListener("click", () => {
-        somFundo.play()
-      }, { once: true })
-    })
+        somFundo.play();
+      }, { once: true });
+    });
   }
-})
+
+  const botaoOn = document.querySelector(".ligar-desligar-som .on");
+  const botaoOff = document.querySelector(".ligar-desligar-som .off");
+
+  const todosAudios = document.querySelectorAll("audio");
+  const audioPrototypePlay = Audio.prototype.play;
+  let sonsMutados = false;
+
+  Audio.prototype.play = function () {
+    if (sonsMutados) {
+      this.muted = true;
+    }
+    return audioPrototypePlay.call(this);
+  };
+
+  if (botaoOn && botaoOff) {
+    botaoOff.style.display = "none";
+    botaoOn.style.display = "inline";
+
+    botaoOn.addEventListener("click", () => {
+      sonsMutados = true;
+      todosAudios.forEach(audio => audio.muted = true);
+      botaoOn.style.display = "none";
+      botaoOff.style.display = "inline";
+    });
+
+    botaoOff.addEventListener("click", () => {
+      sonsMutados = false;
+      todosAudios.forEach(audio => audio.muted = false);
+      botaoOff.style.display = "none";
+      botaoOn.style.display = "inline";
+    });
+  }
+});
+
 // --- Fim evento DOMContentLoaded ---
 
 // --- Função navegação dinâmica do texto sobre ---
