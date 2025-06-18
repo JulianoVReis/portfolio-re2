@@ -1045,3 +1045,9 @@ main {
 .modal-skills.animar-saida {
 	animation: sair-para-esquerda 0.5s ease forwards;
 }
+
+@media screen and (max-width: 991px) {
+	body {
+		background: #151515;
+	}
+}

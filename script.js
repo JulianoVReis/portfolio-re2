@@ -153,7 +153,7 @@ function reinicializarScripts() {
       info1img.style.display = "flex"
       img.src = "img/formacao.png"
       if (info2txt) info2txt.style.display = "block"
-      typeWriterInfo('<span style="color: #19E428;">Formação</span><br>QI - Faculdade & Escola Técnica<br>(cursando)')
+      typeWriterInfo('<span style="color: #19E428;">Formação</span><br>QI - Faculdade & Escola Técnica<br>Análise e Desenvolvimento de Sistemas<br>(cursando)')
     }
   })
   // --- Fim evento Formação ---
