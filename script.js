@@ -563,8 +563,9 @@ class Carousel {
       { id: "3", src: "img/capa-files4.jpg", title: "Animais Fantásticos - HTML/CSS/JavaScript", link: "https://projetoanimaisfantasticos.netlify.app/" },
       { id: "4", src: "img/capa-files5.jpg", title: "Pokédex - HTML/CSS/JavaScript", link: "https://julianovreis.github.io/pokedex/" },
       { id: "5", src: "img/capa-files6.jpg", title: "Projeto Portfólio - HTML/CSS", link: "https://julianovreis.github.io/projeto-portfolio/" },
+			{ id: "6", src: "img/capa-files7.jpg", title: "Projeto Portfólio - HTML/CSS/JavaScript/<br>Node.js + Express/PostgreSQL", link: "https://to-do-list-ws16.onrender.com/" },
     ]
-    this.carouselInView = [1, 2, 3, 4, 5]
+    this.carouselInView = [1, 2, 3, 4, 5, 6]
     this.carouselContainer = null
   }
 
