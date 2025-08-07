@@ -1,5 +1,5 @@
 // --- Variáveis Globais ---
-let whatsapp, gmail, skills, modalSkills, modalSkillsN1, modalSkillsN2, modalSkillsN3
+let whatsapp, gmail, skills, modalSkills, modalSkillsN1, modalSkillsN2, modalSkillsN3, modalSkillsN5
 let info1img, info1, info1Span, info2txt, carrossel, projetos
 let img
 let originalBorderImage, originalBackgroundColor
@@ -57,6 +57,7 @@ function reinicializarScripts() {
   modalSkillsN1 = document.querySelector(".modal-skills .n1")
   modalSkillsN2 = document.querySelector(".modal-skills .n2")
   modalSkillsN3 = document.querySelector(".modal-skills .n3")
+  modalSkillsN5 = document.querySelector(".modal-skills .n5")
   info1img = document.querySelector(".info-1-img")
   info1 = document.querySelector(".info-1")
   info1Span = document.querySelector(".info-1 span")
@@ -306,7 +307,7 @@ function reinicializarScripts() {
   })
   // --- Fim evento Linkedin ---
 
-  // --- Eventos Skills Níveis (N1, N2, N3) ---
+  // --- Eventos Skills Níveis (N1, N2, N3, N5) ---
   modalSkillsN1?.addEventListener("click", () => {
     if (info2txt) info2txt.style.display = "block"
     typeWriterInfo('<span style="color: #19E428;">HTML5/CSS3</span><br>Curso em Vídeo - 40h<br>Origamid - 23h')
@@ -320,6 +321,11 @@ function reinicializarScripts() {
   modalSkillsN3?.addEventListener("click", () => {
     if (info2txt) info2txt.style.display = "block"
     typeWriterInfo('<span style="color: #19E428;">JavaScript</span><br>Curso em Vídeo - 40h<br>Origamid - 37h')
+  })
+
+	modalSkillsN5?.addEventListener("click", () => {
+    if (info2txt) info2txt.style.display = "block"
+    typeWriterInfo('<span style="color: #19E428;">React</span><br>Origamid - Estudando')
   })
   // --- Fim eventos Skills Níveis ---
 
