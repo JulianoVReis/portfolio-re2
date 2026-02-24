@@ -310,7 +310,7 @@ function reinicializarScripts() {
   // --- Eventos Skills Níveis (N1, N2, N3, N5) ---
   modalSkillsN1?.addEventListener("click", () => {
     if (info2txt) info2txt.style.display = "block"
-    typeWriterInfo('<span style="color: #19E428;">HTML5/CSS3</span><br>Curso em Vídeo - 40h<br>Origamid - 23h')
+    typeWriterInfo('<span style="color: #19E428;">HTML5/CSS3</span><br>Curso em Vídeo - 40h<br>Origamid - 46h')
   })
 
   modalSkillsN2?.addEventListener("click", () => {
@@ -320,12 +320,12 @@ function reinicializarScripts() {
 
   modalSkillsN3?.addEventListener("click", () => {
     if (info2txt) info2txt.style.display = "block"
-    typeWriterInfo('<span style="color: #19E428;">JavaScript</span><br>Curso em Vídeo - 40h<br>Origamid - 37h')
+    typeWriterInfo('<span style="color: #19E428;">JavaScript</span><br>Curso em Vídeo - 40h<br>Origamid - 74h')
   })
 
 	modalSkillsN5?.addEventListener("click", () => {
     if (info2txt) info2txt.style.display = "block"
-    typeWriterInfo('<span style="color: #19E428;">React</span><br>Origamid - Estudando')
+    typeWriterInfo('<span style="color: #19E428;">React</span><br>Origamid - 36h')
   })
   // --- Fim eventos Skills Níveis ---
 
@@ -570,8 +570,9 @@ class Carousel {
       { id: "4", src: "img/capa-files5.jpg", title: "Pokédex - HTML/CSS/JavaScript", link: "https://julianovreis.github.io/pokedex/" },
       { id: "5", src: "img/capa-files6.jpg", title: "Projeto Portfólio - HTML/CSS", link: "https://julianovreis.github.io/projeto-portfolio/" },
 			{ id: "6", src: "img/capa-files7.jpg", title: "To Do List - HTML/CSS/JavaScript", link: "https://todolistprojeto.netlify.app/" },
+			{ id: "7", src: "img/capa-files8.jpg", title: "Dogs - React", link: "https://redesocialdogs.netlify.app/" }
     ]
-    this.carouselInView = [1, 2, 3, 4, 5, 6]
+    this.carouselInView = [1, 2, 3, 4, 5, 6, 7]
     this.carouselContainer = null
   }
 
@@ -647,7 +648,7 @@ class Carousel {
     this.carouselInView.forEach((item, index) => {
       this.carouselContainer.children[index].className = `carousel-item carousel-item-${item}`
     })
-    this.carouselData.slice(0, 5).forEach((data, index) => {
+    this.carouselData.slice(0, 7).forEach((data, index) => {
       const wrapper = this.carouselContainer.children[index]
       wrapper.querySelector("img").src = data.src
       wrapper.querySelector(".carousel-caption").innerHTML = `<a href="${data.link}" target="_blank">${data.title}</a>`
